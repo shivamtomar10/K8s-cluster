@@ -30,6 +30,8 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 #if [ $((id -u))==0]
 #then 
+# sudo swapoff -a
+# sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab ( for kubelet to start swap must be off)
 
 #else
   #mkdir -p $HOME/.kube
