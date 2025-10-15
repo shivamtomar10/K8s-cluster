@@ -57,3 +57,7 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 # sudo systemctl restart docker
 # # or
 # sudo systemctl restart containerd
+#for kubelet failed to connect to api server
+# sudo systemctl daemon-reload
+# sudo systemctl restart kubelet
+# sudo systemctl status kubelet
