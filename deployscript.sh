@@ -38,7 +38,20 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 #fi
 
 #Install Flannel for the Pod Network (On Master Node)
-kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+# kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 
 #Control plane node isolation 
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+
+# kubeadm reset -f 
+
+# sudo rm -rf /etc/cni/net.d
+# sudo rm -rf /opt/cni/bin
+# sudo iptables -F
+# sudo iptables -t nat -F
+# sudo iptables -t mangle -F
+# sudo iptables -X
+# sudo systemctl restart docker
+# # or
+# sudo systemctl restart containerd
